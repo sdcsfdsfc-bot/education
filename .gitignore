@@ -1,4 +1,20 @@
-# The desktop prototype stays local; only the browser app is published.
-1.py
-__pycache__/
+# Local recovery copies of the original repository history.
+/.local-backups/
+
+# Repository and hosting metadata from the former standalone sites.
+**/.git/
+**/.openai/
+
+# Local dependencies, prototypes, and machine-specific files.
+**/node_modules/
+**/__pycache__/
+**/1.py
 *.pyc
+*.pyo
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+.DS_Store
+Thumbs.db

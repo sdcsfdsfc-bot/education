@@ -1,0 +1,4 @@
+# The desktop prototype stays local; only the browser app is published.
+1.py
+__pycache__/
+*.pyc
