@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  // 새 알고리즘은 준비 중 항목을 채우면 홈 카드, 비교표, 공통 메뉴에 반영됩니다.
+  // 알고리즘 항목은 홈 카드, 비교표, 공통 메뉴에 함께 반영됩니다.
   // path는 이 프로젝트의 최상위 index.html을 기준으로 작성합니다.
   window.NatureLab = Object.freeze({
     courses: Object.freeze([
@@ -16,7 +16,7 @@
         path: 'GA/index.html', section: 'GA/', ready: true
       },
       {
-        id: 'aco', abbreviation: 'ACO', title: '개미 군집 최적화', shortTitle: '개미 군집',
+        id: 'aco', abbreviation: 'ACO', title: '개미 군집 최적화', shortTitle: '개미',
         english: 'Ant Colony Optimization', inspiration: '개미의 먹이 탐색',
         theme: '함께 찾는 길에서 배우다',
         description: '좋은 길의 흔적을 서로 나누어요. 페로몬을 남기고 지우며 더 나은 경로를 찾아갑니다.',
@@ -33,12 +33,17 @@
         keywords: ['온도', '확률적 수용', '냉각'],
         example: '식당 9곳의 짧은 방문 순서',
         strategy: '온도에 따라 나쁜 후보도 받아들이며 한 해를 바꿔갑니다.',
-        path: 'PSO/1234-main/tsp-annealing-frames/index.html', section: 'PSO/', ready: true
+        path: 'SA/1234-main/tsp-annealing-frames/index.html', section: 'SA/', ready: true
       },
       {
-        id: 'next', title: '다음 자연의 아이디어는?',
-        description: '새로운 알고리즘이 이곳에 합류합니다. 또 다른 방식으로 더 나은 답을 찾는 여정을 이어가요.',
-        ready: false
+        id: 'pso', abbreviation: 'PSO', title: '입자 군집 최적화', shortTitle: '입자',
+        english: 'Particle Swarm Optimization', inspiration: '새와 물고기 무리의 움직임',
+        theme: '무리가 나누는 경험에서 배우다',
+        description: '자신의 최고 기록과 무리의 최고 기록을 함께 참고해요. 입자들이 이동 방향을 바꾸며 더 나은 해를 찾아갑니다.',
+        keywords: ['관성', '개인 최고 기록', '무리 최고 기록'],
+        example: '예산 안에서 효용이 큰 소비 조합',
+        strategy: '개인의 기억과 무리의 정보를 참고해 속도와 위치를 바꿉니다.',
+        path: 'PSO/stage1.html', section: 'PSO/', ready: true
       }
     ])
   });

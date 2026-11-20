@@ -5,3 +5,4 @@
 .nl-course-nav .nl-title-short{display:none}.nl-course-nav .nl-link{font-size:14px}
 @media(max-width:850px){.nl-course-nav .nl-link{font-size:14px}}
 @media(max-width:620px){.nl-course-nav .nl-title-full{display:none}.nl-course-nav .nl-title-short{display:inline}.nl-course-nav .nl-link{font-size:14px;padding:6px}.nl-course-nav .nl-links{gap:2px}}
+@media(max-width:360px){.nl-course-nav .nl-code{display:none}}

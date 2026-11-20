@@ -16,7 +16,7 @@
     return `<a class="nl-link" href="${escape(new URL(course.path, root).href)}" aria-label="${escape(course.title)}"${active ? ' aria-current="page"' : ''}><span class="nl-code">${escape(course.abbreviation)}</span><span class="nl-title-full">${escape(course.title)}</span><span class="nl-title-short">${escape(course.shortTitle || course.title)}</span></a>`;
   }).join('')}${courses.some(course => !course.ready) ? '<span class="nl-upcoming">새 알고리즘 추가 예정</span>' : ''}</div></div>`;
   document.body.prepend(nav);
-  const main = document.querySelector('main') || document.querySelector('.shell') || document.querySelector('.app-shell');
+  const main = document.querySelector('main') || document.querySelector('.shell') || document.querySelector('.app-shell') || document.querySelector('.wrap');
   if (main) {
     if (main.id) nav.querySelector('.nl-skip').href = `#${main.id}`;
     else main.id = 'nl-lesson-content';

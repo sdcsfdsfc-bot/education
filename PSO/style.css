@@ -1,0 +1,74 @@
+@font-face{font-family:"NEXON Lv2 Gothic OTF";src:url("fonts/NEXON-Lv2-Gothic-Light.otf") format("opentype");font-style:normal;font-weight:300;font-display:swap}
+@font-face{font-family:"NEXON Lv2 Gothic OTF";src:url("fonts/NEXON-Lv2-Gothic-Regular.otf") format("opentype");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"NEXON Lv2 Gothic OTF";src:url("fonts/NEXON-Lv2-Gothic-Medium.otf") format("opentype");font-style:normal;font-weight:500 600;font-display:swap}
+@font-face{font-family:"NEXON Lv2 Gothic OTF";src:url("fonts/NEXON-Lv2-Gothic-Bold.otf") format("opentype");font-style:normal;font-weight:700 900;font-display:swap}
+:root{
+  color-scheme:light;
+  --bg:#f5f4ee;--panel:#fffefa;--ink:#243d36;--muted:#68776e;--line:#dfe5da;
+  --teal:#256957;--low:#244d48;--high:#d6e9c8;--amber:#bf8a38;--amber-ink:#89611f;
+  --indigo:#5978a4;--crimson:#b85849;--grid:#e4e8df;
+  --soft:#f2f5ed;--plot:#f8faf5;--on-accent:#fffef7;
+  --shadow:0 6px 26px rgb(32 60 43 / 4%);--shadow-hover:0 10px 28px rgb(32 60 43 / 9%);
+  --font:"NEXON Lv2 Gothic OTF","넥슨Lv2고딕 OTF",sans-serif;
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;--bg:#17221e;--panel:#202e27;--ink:#edf0df;--muted:#acb9ad;--line:#38493c;
+    --teal:#a4d3b0;--low:#284e43;--high:#d9e8b6;--amber:#d9b26e;--amber-ink:#e0c593;
+    --indigo:#a0b9e0;--crimson:#ef9a83;--grid:#3b4b3f;--soft:#29382d;--plot:#1d2a23;--on-accent:#172b21;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;--bg:#17221e;--panel:#202e27;--ink:#edf0df;--muted:#acb9ad;--line:#38493c;
+  --teal:#a4d3b0;--low:#284e43;--high:#d9e8b6;--amber:#d9b26e;--amber-ink:#e0c593;
+  --indigo:#a0b9e0;--crimson:#ef9a83;--grid:#3b4b3f;--soft:#29382d;--plot:#1d2a23;--on-accent:#172b21;
+}
+*{box-sizing:border-box}
+*,*::before,*::after{font-family:var(--font)!important}
+body{margin:0;background:radial-gradient(ellipse at 90% 0%,color-mix(in srgb,var(--amber) 7%,transparent),transparent 45%),var(--bg);color:var(--ink);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit}
+button,a,input,select{-webkit-tap-highlight-color:transparent}
+a{color:var(--teal)}
+button{border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);padding:11px 15px;font-size:14px;cursor:pointer;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s}
+button:hover:not(:disabled){background:var(--soft);border-color:var(--teal);transform:translateY(-1px)}
+button.primary{background:var(--teal);color:var(--on-accent);border-color:var(--teal);box-shadow:0 4px 10px color-mix(in srgb,var(--teal) 16%,transparent)}
+button.primary:hover:not(:disabled){background:color-mix(in srgb,var(--teal) 90%,var(--ink))}
+button:disabled,input:disabled,select:disabled{cursor:default;opacity:.55}
+:is(a,button,input,select):focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+input[type=range]{width:100%;accent-color:var(--teal);min-height:28px;cursor:pointer}
+input[type=checkbox]{accent-color:var(--teal);width:16px;height:16px;flex:none}
+[hidden]{display:none!important}
+.background-emblem{display:none}
+.hint{font-size:12px;color:var(--muted);line-height:1.65}
+.status{padding:12px 14px;background:var(--soft);color:var(--muted);font-size:12px;border-radius:12px;margin-top:16px;line-height:1.7}
+.status.warn{background:color-mix(in srgb,var(--crimson) 12%,var(--panel))}
+.loading{padding:48px;color:var(--muted)}
+.actions{display:flex;gap:9px;margin-top:22px}
+.actions .primary{flex:1}
+.actions button{min-height:46px}
+.formula{background:var(--soft);border-radius:12px;border-left:3px solid var(--amber);padding:14px 16px;font-size:16px;line-height:1.8;margin-bottom:18px;overflow-wrap:anywhere}
+.formula small{display:block;font-size:12px;color:var(--muted);margin-top:8px}
+.focus-select{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:13px;margin:12px 0}
+.focus-select select{padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--ink)}
+.check{display:flex;gap:9px;align-items:center;font-size:13px;cursor:pointer;margin:13px 0}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.presets button{padding:7px 10px;font-size:12px}
+.ctrl{margin:17px 0}
+.ctrl .top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px}
+.ctrl output{padding:2px 9px;border-radius:7px;background:var(--soft);color:var(--teal);font-variant-numeric:tabular-nums}
+.sym{display:inline-block;min-width:2em;color:var(--teal)}
+.readout{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 12px;font-size:12px;margin:16px 0 0;border-top:1px solid var(--line);padding-top:14px}
+.readout dt{color:var(--muted)}.readout dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.learning-explanation{padding:16px;border:1px solid var(--line);background:var(--soft);border-radius:12px;margin:12px 0;font-size:13px;line-height:1.8}
+.learning-explanation p{margin:10px 0 0}
+.learning-phases{display:flex;flex-wrap:wrap;list-style:none;padding:0;margin:0;gap:6px}
+.learning-phases li{padding:4px 8px;border-radius:6px;font-size:11px;color:var(--muted)}
+.learning-phases li.active{background:var(--teal);color:var(--on-accent)}
+.iteration-log-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.iteration-summary{font-size:12px;color:var(--muted);padding:10px 12px;background:var(--soft);border-radius:9px}
+.iteration-log{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:8px;max-height:240px;overflow:auto}
+.iteration-entry{display:flex;align-items:baseline;gap:12px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:12px}
+.iteration-entry p{margin:0}.iteration-number{white-space:nowrap;color:var(--teal)}
+.iteration-entry.is-improved{border-left:3px solid var(--teal)}
+.iteration-empty{font-size:12px;padding:12px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
