@@ -13,11 +13,15 @@
 
 담금질 자료는 `SA`, 입자 군집 자료는 `PSO` 폴더에 있습니다. PSO는 알고리즘 소개와 수식(`index.html`), 기본 원리(`stage1.html`), 연속 시행(`stage2.html`), 예산 제약 최적화(`stage3.html`) 순서로 학습합니다. 모든 학습 화면에는 공통 이동 메뉴가 있습니다.
 
+GA는 `GA/index.html`에서 배경·탐색 원리·점수 정체와 40세대 중지 기준을 소개하고, `GA/learn.html`에서 나방 튜토리얼과 직접 실험을 진행합니다. 소개의 가상 기록과 실험은 `GA/stagnation.js`의 같은 정체 판정 규칙을 사용합니다.
+
 PSO의 수식 렌더링에 필요한 KaTeX와 폰트는 `PSO/lib/katex/`에 포함되어 있습니다. 수정본 원본과 교체 전 PSO 자료는 `.local-backups/`에 보관합니다. 개별 사이트의 Git 정보·배포 설정, 사용되지 않는 이미지·글꼴은 통합 사이트에 포함하지 않습니다.
 
 ## 새 알고리즘 추가
 
 `assets/algorithms.js`의 `courses`에 기존 항목과 같은 형식으로 새 자료를 추가합니다. `path`에는 최상위 `index.html` 기준 경로, `section`에는 해당 자료 폴더, `ready`에는 `true`를 지정합니다. 메인 카드·비교표·공통 메뉴에 자동으로 반영됩니다. 새 알고리즘 전용 삽화는 `assets/home.js`의 `illustration`에 추가할 수 있습니다.
+
+메인 카드의 장점·한계·적합한 문제·활용 예시는 각 항목의 `strength`, `limitation`, `bestFor`, `applications`에 작성합니다. 비교표의 간단한 설명은 `strengthSummary`, `limitationSummary`, `applicationSummary`에 둡니다.
 
 새 학습 페이지의 `<head>`에는 상대 경로에 맞춰 다음 파일을 연결합니다.
 

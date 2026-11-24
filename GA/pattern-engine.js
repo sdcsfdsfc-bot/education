@@ -107,13 +107,9 @@ function patternScore(m,forest=state.forest){
   const mean=difference/(samples.length*3);
   return {mean,score:sigmoid(mean)};
 }
-const BEST_UPDATE_EPSILON=.005;
-const STAGNATION_LIMIT=40;
+const STAGNATION_LIMIT=window.GAStagnation.limit;
 function stalledGenerations(scores){
-  if(scores.length<2)return 0;
-  let lastImprovement=0;
-  for(let i=1;i<scores.length;i++)if(scores[i]>scores[lastImprovement]+BEST_UPDATE_EPSILON)lastImprovement=i;
-  return scores.length-1-lastImprovement;
+  return window.GAStagnation.count(scores);
 }
 function geneDisplay(m,j){
   const value=m.genes[j];return j<6?value.toFixed(1):value.toFixed(2);

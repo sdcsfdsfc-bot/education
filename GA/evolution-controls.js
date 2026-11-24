@@ -116,17 +116,21 @@ render=function(){
   renderWithEnvironment();
   const count=state.best.length,latest=state.best.at(-1),previous=state.best.at(-2),stalled=stalledGenerations(state.best);
   const updated=count>1&&stalled===0;
+  $('ga-stall-count').textContent=`${stalled} / ${STAGNATION_LIMIT}세대 정체`;
+  $('ga-stall-message').textContent=state.phase==='finished'&&state.stopReason==='stagnation'
+    ?'정체 기준에 따라 이번 실행을 마쳤습니다. 더 좋은 해가 남아 있을 수 있습니다.'
+    :updated?'최고 기록이 갱신되어 정체 횟수가 0으로 돌아갔습니다.':'마지막으로 인정한 최고 기록 이후의 세대를 셉니다.';
   $('best-score').textContent=count?`${latest.toFixed(2)}%`:'—';
   $('best-record').classList.toggle('fresh',updated);
   $('best-record').classList.toggle('stopped',state.phase==='finished');
   $('best-update').textContent=state.phase==='finished'&&state.stopReason==='stagnation'
-    ?`40세대 동안 갱신 없어 중지`
+    ?`${STAGNATION_LIMIT}세대 동안 갱신 없어 중지`
     :updated?`새 최고 기록! +${(latest-previous).toFixed(latest-previous<.01?3:2)}%p`
     :count===1?'첫 최고 점수 기록':count?`갱신 없이 ${stalled} / ${STAGNATION_LIMIT}세대`:'첫 세대 평가 전';
   $('scene-count').textContent=`환경 ${state.environmentRound||1} · ${state.generation}세대 · 최고 ${count?latest.toFixed(2)+'%':'평가 전'}`;
   $('previous').disabled=state.generation<=1;
   $('auto').disabled=state.phase==='finished';
-  $('tip').textContent=state.phase==='finished'?'최고 점수가 40세대 연속 갱신되지 않아 실험을 멈췄습니다. 처음부터 또는 새 나무 배경에서 다시 시작할 수 있습니다.':state.environmentRound>1?'기존 나방 집단을 유지하고 새 나무 배경에서 점수를 다시 계산했습니다.':'다음 세대를 누르면 평가·선택·교차·변이를 한 번에 진행합니다.';
+  $('tip').textContent=state.phase==='finished'?`${STAGNATION_LIMIT}세대 연속으로 인정되는 최고 기록 갱신이 없어 종료했습니다. 아래의 중지 기준 설명을 펼쳐 확인해 보세요.`:state.environmentRound>1?'기존 나방 집단을 유지하고 새 나무 배경에서 점수를 다시 계산했습니다.':'다음 세대를 누르면 평가·선택·교차·변이를 한 번에 진행합니다.';
 };
 $('change-background').addEventListener('click',changeBackground);
 $('rate').addEventListener('input',drawChart);

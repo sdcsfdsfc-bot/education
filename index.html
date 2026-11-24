@@ -6,9 +6,9 @@
   <meta name="theme-color" content="#194b3c">
   <meta name="description" content="유전 알고리즘(GA), 개미 군집 최적화(ACO), 담금질 알고리즘(SA), 입자 군집 최적화(PSO)의 원리를 이해하고 직접 실험하는 자연 모방 최적화 학습 공간입니다.">
   <title>자연의 해답 · 자연 모방 최적화 알고리즘</title>
-  <link rel="stylesheet" href="assets/site.css">
-  <script src="assets/algorithms.js" defer></script>
-  <script src="assets/home.js" defer></script>
+  <link rel="stylesheet" href="assets/site.css?v=learning-guide-20261124-1">
+  <script src="assets/algorithms.js?v=learning-guide-20261124-1" defer></script>
+  <script src="assets/home.js?v=learning-guide-20261124-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -91,7 +91,7 @@
 
     <section class="algorithms-section page-width" id="algorithms" aria-labelledby="algorithms-title">
       <div class="section-heading">
-        <div><p class="eyebrow">LEARN FROM NATURE</p><h2 id="algorithms-title">어떤 자연의 아이디어가 궁금한가요?</h2><p>하나를 골라 원리를 살펴보고, 직접 실험해 보세요.</p></div>
+        <div><p class="eyebrow">LEARN FROM NATURE</p><h2 id="algorithms-title">어떤 자연의 아이디어가 궁금한가요?</h2><p>작동 방식과 장단점, 어울리는 문제를 살펴보고 하나를 골라 체험해 보세요.</p></div>
         <span class="section-side-note">원리 이해 <span aria-hidden="true">/</span> 단계별 관찰 <span aria-hidden="true">/</span> 직접 실험</span>
       </div>
       <div class="algorithm-grid" id="algorithm-grid"></div>
@@ -99,14 +99,16 @@
     </section>
 
     <section class="comparison-section page-width" id="compare" aria-labelledby="comparison-title">
-      <div class="section-heading"><div><p class="eyebrow">SAME GOAL, DIFFERENT IDEAS</p><h2 id="comparison-title">목표는 같아도, 찾는 방법은 달라요.</h2><p>모두 더 좋은 해를 찾지만, 자연에서 빌려온 전략이 다릅니다.</p></div></div>
+      <div class="section-heading"><div><p class="eyebrow">SAME GOAL, DIFFERENT IDEAS</p><h2 id="comparison-title">목표는 같아도, 찾는 방법은 달라요.</h2><p>문제를 어떻게 표현할 수 있는지, 평가 비용과 탐색 방식이 어떤지 함께 비교해 보세요.</p></div></div>
       <div class="comparison-table-wrap" role="region" aria-label="알고리즘 비교표" tabindex="0">
         <table class="comparison-table">
-          <caption class="sr-only">알고리즘별 영감, 탐색 전략, 학습 주제 비교</caption>
-          <thead><tr><th scope="col">알고리즘</th><th scope="col">자연에서 얻은 영감</th><th scope="col">더 좋은 답을 찾는 방법</th><th scope="col">직접 만나는 문제</th></tr></thead>
+          <caption class="sr-only">알고리즘별 탐색 전략, 강점, 한계, 활용 예시 비교</caption>
+          <thead><tr><th scope="col">알고리즘</th><th scope="col">핵심 전략</th><th scope="col">강점</th><th scope="col">주의할 점</th><th scope="col">활용 예시</th></tr></thead>
           <tbody id="comparison-body"></tbody>
         </table>
       </div>
+      <p class="comparison-note">활용 예시는 적용할 수 있는 문제 구조를 설명합니다. 실제로 유리한 방법은 제약 조건, 점수 계산 비용, 설정에 따라 달라집니다. 네 방법 모두 일반적인 유한 실행에서 전역 최적해를 보장하지는 않습니다.</p>
+      <details class="comparison-sources"><summary>장단점과 활용 예시의 참고 자료</summary><ul><li><strong>GA</strong> · <a href="https://www.cs.colostate.edu/~genitor/MiscPubs/tutorial.pdf" target="_blank" rel="noopener noreferrer">Whitley, A Genetic Algorithm Tutorial</a> · <a href="https://www.mathworks.com/help/gads/population-diversity.html" target="_blank" rel="noopener noreferrer">집단 다양성</a></li><li><strong>ACO</strong> · <a href="https://iridia.ulb.ac.be/~mdorigo/INFO-H-414/Overheads/4-Ant_colony_optimization.pdf" target="_blank" rel="noopener noreferrer">Marco Dorigo의 ACO 강의 자료</a></li><li><strong>SA</strong> · <a href="https://www.mathworks.com/help/gads/understanding-simulated-annealing-terminology.html" target="_blank" rel="noopener noreferrer">온도와 냉각의 역할</a></li><li><strong>PSO</strong> · <a href="https://www.mathworks.com/help/gads/particleswarm.html" target="_blank" rel="noopener noreferrer">연속 변수 탐색과 경계 설정 예시</a></li></ul></details>
       <div class="closing-note"><span class="closing-leaf" aria-hidden="true">✳</span><p>공식을 외우기 전에, <strong>어떻게 답을 찾아가는지</strong> 먼저 관찰해 보세요.</p><a href="#algorithms">알고리즘 선택하기</a></div>
     </section>
   </main>
