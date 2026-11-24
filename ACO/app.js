@@ -22,7 +22,7 @@ function normalize(el){
 }
 function setStatus(){
  $('play').textContent=running?'Ⅱ 일시정지':'▶ 탐색 재생';
- $('status').textContent=`${iteration} / ${config().limit} 반복 완료 · ${phaseNames[phase]}${running?' · 진행 중':pending?' · 일시정지':''}`;
+ $('status').textContent=`${iteration} / ${config().limit} 반복 완료 · ${phaseNames[phase]}${iteration>=config().limit?' · 목표 반복 도달로 종료':running?' · 진행 중':pending?' · 일시정지':''}`;
 }
 function showView(view,focus=false){
  activeView=view==='simulation'?'simulation':'learn';
