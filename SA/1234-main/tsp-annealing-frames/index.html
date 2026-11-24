@@ -16,6 +16,7 @@
   <script src="../../../assets/course-nav.js" defer></script>
   <script src="annealing.js?v=20261125-1" defer></script>
   <script src="introduction.js?v=20261125-1" defer></script>
+  <link rel="stylesheet" href="../../../assets/problem-fit.css?v=20261125-1">
 </head>
 <body>
   <div class="app-shell">
@@ -57,9 +58,7 @@
             <details class="guide-more"><summary>0.995와 0.999 중 어느 쪽이 더 천천히 식나요?</summary><p>1에 가까운 0.999가 더 천천히 식습니다. 같은 반복 횟수 뒤에 더 높은 온도를 유지해 긴 후보도 상대적으로 자주 받아들이지만, 더 좋은 최종 결과를 보장하지는 않습니다. 이 실험에서는 천천히 식혀도 2,400회 한도에 먼저 도달할 수 있습니다.</p><p>단계별 2부는 T(t)=160×0.65ᵗ인 고정 수업 장면을 사용합니다. 자유 실험의 냉각률과 종료 한도는 별도의 실행 설정입니다. 결과를 비교할 때 같은 지점 배치와 초기 경로인지도 확인하세요.</p></details>
           </section>
 
-          <section class="guide-section" aria-labelledby="sa-use-title">
-            <p class="guide-eyebrow">WHERE IT FITS</p><h2 id="sa-use-title">현재 답을 조금 바꿔 볼 수 있는 문제에</h2><div class="guide-reason-grid"><article><span>장점</span><h3>이웃을 만드는 규칙으로 시작해요.</h3><p>현재 해와 후보를 비교하며 탐색할 수 있어 구조가 간단합니다. 좋지 않은 후보도 수용하므로 개선만 허용하는 탐색보다 다른 영역으로 이동할 기회가 있습니다.</p></article><article><span>한계</span><h3>온도·냉각·이웃 규칙에 민감해요.</h3><p>급격한 냉각은 탐색을 좁힐 수 있고, 느린 냉각은 계산량을 늘립니다. 제한된 실행에서 전역 최적해를 보장하지 않으며, 시작 경로와 무작위 선택에 따라 결과가 달라집니다.</p></article><article><span>활용 예시</span><h3>방문 순서와 부품 배치</h3><p>방문 순서를 뒤집거나 부품 위치를 바꾸는 것처럼 작은 변경을 제안하고 비용을 계산할 수 있는 문제에 응용할 수 있습니다. 문제마다 이웃과 비용의 정의가 필요합니다.</p></article></div>
-          </section>
+          <section class="guide-section problem-fit" aria-labelledby="sa-use-title"><h2 id="sa-use-title">잘 맞는 문제와 잘 맞지 않는 문제</h2><div class="problem-fit-grid"><article><span class="problem-fit-label">잘 맞는 문제</span><h3>회로 부품 배치·공장 설비 배치</h3><p>부품이나 설비의 위치를 바꿔 배선 길이·이동 비용을 줄이는 문제에 활용할 수 있어요. 잠깐 비용이 늘어나는 재배치를 거쳐 더 좋은 배치로 갈 여지가 있을 때 후보가 됩니다.</p></article><article class="problem-fit-poor"><span class="problem-fit-label">잘 맞지 않는 문제</span><h3>여러 수업을 동시에 옮겨야 하는 빡빡한 시간표</h3><p>한두 수업만 옮기면 교사·교실이 겹치는 시간표에서는, 단순 교환만 허용할 경우 새로운 유효한 답으로 이동하기 어려워요. 여러 수업을 함께 옮기는 변경 규칙이 필요합니다.</p></article></div></section>
 
           <section class="guide-section guide-final-section"><p class="guide-eyebrow">LEARN, THEN EXPLORE</p><h2>후보를 만들고, 확률을 이해하고, 직접 비교하세요.</h2><p>1부에서 구간 뒤집기를, 2부에서 온도와 채택 확률을 살펴본 뒤 3부에서 설정을 바꾸며 실험할 수 있습니다.</p><button class="guide-action" type="button" data-go-part="1">후보 경로 만들기 시작</button><details class="guide-more guide-sources"><summary>배경 자료와 이 사이트의 구현</summary><ul><li><a href="https://doi.org/10.1126/science.220.4598.671" target="_blank" rel="noopener">Kirkpatrick · Gelatt · Vecchi (1983), Optimization by Simulated Annealing</a></li><li><a href="https://www.ida.liu.se/~zebpe83/heuristic/papers/sa_science.pdf" target="_blank" rel="noopener">원 논문 읽기 · 대학 강의 자료에 수록된 PDF</a></li></ul><p>확률과 냉각 원리는 위 논문을 참고했습니다. 구간 뒤집기, 길이 단위, 자유 실험의 0.015·2,400회 기준은 이 사이트의 구현입니다. 금속 애니메이션은 개념 설명용이며 물리 시뮬레이션은 아닙니다.</p></details></section>
         </div>

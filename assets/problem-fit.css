@@ -1,0 +1,10 @@
+.problem-fit{color:#203e30;font-size:16px;line-height:1.85}
+.problem-fit>h2{font-size:28px;line-height:1.55;letter-spacing:-.04em;margin:0 0 24px;word-break:keep-all}
+.problem-fit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.problem-fit-grid article{min-width:0;border-top:3px solid #abc69d;padding:18px 4px 0}
+.problem-fit-grid .problem-fit-poor{border-color:#cbb99d}
+.problem-fit-label{display:block;font-size:14px;font-weight:700;color:#4c6d3f;margin-bottom:9px}
+.problem-fit-poor .problem-fit-label{color:#805c32}
+.problem-fit-grid h3{font-size:21px;line-height:1.6;letter-spacing:-.025em;color:#294d36;margin:0 0 12px;word-break:keep-all}
+.problem-fit-grid p{font-size:16px;line-height:1.9;color:#5b705c;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:750px){.problem-fit>h2{font-size:24px}.problem-fit-grid{grid-template-columns:1fr;gap:25px}.problem-fit-grid h3{font-size:20px}}

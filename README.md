@@ -27,7 +27,7 @@ PSO의 수식 렌더링에 필요한 KaTeX와 폰트는 `PSO/lib/katex/`에 포�
 
 `assets/algorithms.js`의 `courses`에 기존 항목과 같은 형식으로 새 자료를 추가합니다. `path`에는 최상위 `index.html` 기준 경로, `section`에는 해당 자료 폴더, `ready`에는 `true`를 지정합니다. 메인 카드·비교표·공통 메뉴에 자동으로 반영됩니다. 새 알고리즘 전용 삽화는 `assets/home.js`의 `illustration`에 추가할 수 있습니다.
 
-메인 카드의 장점·한계·적합한 문제·활용 예시는 각 항목의 `strength`, `limitation`, `bestFor`, `applications`에 작성합니다. 비교표의 간단한 설명은 `strengthSummary`, `limitationSummary`, `applicationSummary`에 둡니다.
+메인 카드의 잘 맞는 문제와 잘 맞지 않는 문제는 `goodAt`, `poorAt`에 작성합니다. 각 항목의 `problems`는 구체적인 문제 예시, `reason`은 적합하거나 어려운 이유입니다. 비교표는 같은 문제 예시를 사용합니다. 각 알고리즘 소개에도 같은 설명을 두며, 공통 표시는 `assets/problem-fit.css`를 사용합니다.
 
 새 학습 페이지의 `<head>`에는 상대 경로에 맞춰 다음 파일을 연결합니다.
 
