@@ -9,9 +9,11 @@
 - 유전 알고리즘(GA): `GA/index.html`
 - 개미 군집 최적화(ACO): `ACO/index.html`
 - 담금질 알고리즘(SA): `SA/1234-main/tsp-annealing-frames/index.html`
-- 입자 군집 최적화(PSO): `PSO/stage1.html`
+- 입자 군집 최적화(PSO): `PSO/index.html`
 
-담금질 자료는 `SA`, 새로 추가한 입자 군집 자료는 `PSO` 폴더에 있습니다. PSO는 기본 원리(`stage1.html`), 연속 시행(`stage2.html`), 예산 제약 최적화(`index.html`) 순서로 학습합니다. 모든 학습 화면에는 공통 이동 메뉴가 있습니다.
+담금질 자료는 `SA`, 입자 군집 자료는 `PSO` 폴더에 있습니다. PSO는 알고리즘 소개와 수식(`index.html`), 기본 원리(`stage1.html`), 연속 시행(`stage2.html`), 예산 제약 최적화(`stage3.html`) 순서로 학습합니다. 모든 학습 화면에는 공통 이동 메뉴가 있습니다.
+
+PSO의 수식 렌더링에 필요한 KaTeX와 폰트는 `PSO/lib/katex/`에 포함되어 있습니다. 수정본 원본과 교체 전 PSO 자료는 `.local-backups/`에 보관합니다. 개별 사이트의 Git 정보·배포 설정, 사용되지 않는 이미지·글꼴은 통합 사이트에 포함하지 않습니다.
 
 ## 새 알고리즘 추가
 

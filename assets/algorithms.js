@@ -43,7 +43,7 @@
         keywords: ['관성', '개인 최고 기록', '무리 최고 기록'],
         example: '예산 안에서 효용이 큰 소비 조합',
         strategy: '개인의 기억과 무리의 정보를 참고해 속도와 위치를 바꿉니다.',
-        path: 'PSO/stage1.html', section: 'PSO/', ready: true
+        path: 'PSO/index.html', section: 'PSO/', ready: true
       }
     ])
   });
