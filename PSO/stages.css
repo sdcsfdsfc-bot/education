@@ -88,8 +88,8 @@ h1{font-size:clamp(32px,3.6vw,52px);line-height:1.25;letter-spacing:-.045em;font
 .intro-symbols>div:last-child{border-bottom:0;padding-bottom:0}
 .intro-symbols dt{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;color:var(--teal);font-weight:700}.intro-symbols dd{margin:0;color:var(--muted)}
 .intro-symbols .katex{font-size:1.05em}
-.intro-sources{padding:0 4px;color:var(--muted);font-size:13px;line-height:1.8}
-.intro-sources summary{cursor:pointer;width:fit-content}.intro-sources p{margin:12px 0 8px}.intro-sources ul{padding-left:20px;margin:0}
+
+
 .lesson-footer .intro-start{padding:11px 17px;border-radius:10px;background:var(--teal);color:var(--on-accent);font-size:14px}
 @media(max-width:1050px){.stage-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.intro-detail-grid{grid-template-columns:1fr}}

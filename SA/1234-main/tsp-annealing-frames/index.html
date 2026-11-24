@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="tutorial.css?v=20261125-1">
   <link rel="stylesheet" href="introduction.css?v=20261125-1">
   <script src="tutorial-model.js?v=20261103-3" defer></script>
-  <script src="tutorial.js?v=20261125-1" defer></script>
+  <script src="tutorial.js?v=20261125-2" defer></script>
   <link rel="stylesheet" href="../../../assets/course-nav.css">
   <script src="../../../assets/algorithms.js" defer></script>
   <script src="../../../assets/course-nav.js" defer></script>
@@ -33,7 +33,7 @@
         <div class="sa-intro-guide">
           <section class="guide-section" aria-labelledby="sa-background-title">
             <p class="guide-eyebrow">WHY ANNEALING?</p><h2 id="sa-background-title">금속의 열처리를, 답을 찾는 규칙으로</h2>
-            <div class="guide-two-columns"><p>SA는 고체를 충분히 가열한 뒤 서서히 식히는 <strong>어닐링(annealing)</strong>에서 착안했습니다. 1983년 커크패트릭·겔랫·베키의 논문은 통계물리의 계산 방법을 조합 최적화에 연결하고, 회로 배치와 외판원 문제 등에 적용했습니다.</p><p>한국어로 흔히 ‘담금질 알고리즘’이라 부르지만, 여기서 본뜨는 핵심은 <strong>서서히 식히는 과정</strong>입니다. 계산의 온도는 섭씨나 실제 금속의 온도가 아니라, 나쁜 후보를 받아들이는 정도를 조절하는 수치입니다.</p></div>
+            <div class="guide-two-columns"><p>SA는 고체를 충분히 가열한 뒤 서서히 식히는 <strong>어닐링(annealing)</strong>에서 착안했습니다. 통계물리의 계산 방법을 조합 최적화에 연결한 방법으로, 회로 배치와 외판원 문제 등에 응용됩니다.</p><p>한국어로 흔히 ‘담금질 알고리즘’이라 부르지만, 여기서 본뜨는 핵심은 <strong>서서히 식히는 과정</strong>입니다. 계산의 온도는 섭씨나 실제 금속의 온도가 아니라, 나쁜 후보를 받아들이는 정도를 조절하는 수치입니다.</p></div>
             <div class="guide-table-scroll" role="region" aria-label="금속 냉각과 SA의 대응" tabindex="0"><table class="guide-mapping"><thead><tr><th scope="col">열처리에서 빌린 말</th><th scope="col">최적화에서의 의미</th><th scope="col">이 실험에서는</th></tr></thead><tbody><tr><th scope="row">원자 배열</th><td>답 후보의 구성</td><td>장소를 방문하는 순서</td></tr><tr><th scope="row">에너지</th><td>줄이고 싶은 비용</td><td>출발점으로 돌아오는 전체 경로 길이</td></tr><tr><th scope="row">온도 T</th><td>나쁜 후보를 받아들이는 정도</td><td>더 긴 경로를 채택할 확률 조절</td></tr><tr><th scope="row">냉각</th><td>탐색을 서서히 신중하게 바꾸기</td><td>매 후보 판정 후 T에 냉각률 곱하기</td></tr></tbody></table></div>
           </section>
 
@@ -60,7 +60,7 @@
 
           <section class="guide-section problem-fit" aria-labelledby="sa-use-title"><h2 id="sa-use-title">잘 맞는 문제와 잘 맞지 않는 문제</h2><div class="problem-fit-grid"><article><span class="problem-fit-label">잘 맞는 문제</span><h3>회로 부품 배치·공장 설비 배치</h3><p>부품이나 설비의 위치를 바꿔 배선 길이·이동 비용을 줄이는 문제에 활용할 수 있어요. 잠깐 비용이 늘어나는 재배치를 거쳐 더 좋은 배치로 갈 여지가 있을 때 후보가 됩니다.</p></article><article class="problem-fit-poor"><span class="problem-fit-label">잘 맞지 않는 문제</span><h3>여러 수업을 동시에 옮겨야 하는 빡빡한 시간표</h3><p>한두 수업만 옮기면 교사·교실이 겹치는 시간표에서는, 단순 교환만 허용할 경우 새로운 유효한 답으로 이동하기 어려워요. 여러 수업을 함께 옮기는 변경 규칙이 필요합니다.</p></article></div></section>
 
-          <section class="guide-section guide-final-section"><p class="guide-eyebrow">LEARN, THEN EXPLORE</p><h2>후보를 만들고, 확률을 이해하고, 직접 비교하세요.</h2><p>1부에서 구간 뒤집기를, 2부에서 온도와 채택 확률을 살펴본 뒤 3부에서 설정을 바꾸며 실험할 수 있습니다.</p><button class="guide-action" type="button" data-go-part="1">후보 경로 만들기 시작</button><details class="guide-more guide-sources"><summary>배경 자료와 이 사이트의 구현</summary><ul><li><a href="https://doi.org/10.1126/science.220.4598.671" target="_blank" rel="noopener">Kirkpatrick · Gelatt · Vecchi (1983), Optimization by Simulated Annealing</a></li><li><a href="https://www.ida.liu.se/~zebpe83/heuristic/papers/sa_science.pdf" target="_blank" rel="noopener">원 논문 읽기 · 대학 강의 자료에 수록된 PDF</a></li></ul><p>확률과 냉각 원리는 위 논문을 참고했습니다. 구간 뒤집기, 길이 단위, 자유 실험의 0.015·2,400회 기준은 이 사이트의 구현입니다. 금속 애니메이션은 개념 설명용이며 물리 시뮬레이션은 아닙니다.</p></details></section>
+          <section class="guide-section guide-final-section"><p class="guide-eyebrow">LEARN, THEN EXPLORE</p><h2>후보를 만들고, 확률을 이해하고, 직접 비교하세요.</h2><p>1부에서 구간 뒤집기를, 2부에서 온도와 채택 확률을 살펴본 뒤 3부에서 설정을 바꾸며 실험할 수 있습니다.</p><button class="guide-action" type="button" data-go-part="1">후보 경로 만들기 시작</button></section>
         </div>
       </section>
       <section id="tutorialView" aria-label="단계별 튜토리얼" hidden>
@@ -76,7 +76,7 @@
       </section>
       <section id="labView" hidden aria-label="자유 실험"><div class="panel lab-intro"><div><p class="eyebrow">PART 03 · YOUR TURN</p><h2>이제 SA 알고리즘을 직접 실험해 보세요.</h2><p>도시 수·초기 온도·냉각률을 바꿔 탐색하세요. 전체 프레임과 대표 프레임 탭에서 후보의 채택 과정을 다시 볼 수 있습니다.</p></div><a class="button secondary" href="lab.html?v=20261125-1" target="_blank" rel="noopener">실험 화면만 크게 열기 ↗</a></div><iframe id="labFrame" title="기존 외판원 문제 자유 실험실" loading="lazy"></iframe></section>
     </main>
-    <footer class="page-footer"><span>후보 하나를 만들고 → 비교하고 → 받아들이거나 유지하고 → 온도를 낮춥니다.</span><a href="https://doi.org/10.1126/science.220.4598.671" target="_blank" rel="noopener">담금질 알고리즘 원 논문 ↗</a></footer>
+    <footer class="page-footer"><span>후보 하나를 만들고 → 비교하고 → 받아들이거나 유지하고 → 온도를 낮춥니다.</span></footer>
   </div>
 </body>
 </html>

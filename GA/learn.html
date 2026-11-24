@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../assets/learning-guide.css?v=20261125-1">
   <script src="stagnation.js" defer></script>
   <script src="app.js" defer></script>
-  <script src="pattern-engine.js?v=ga-intro-20261124-1" defer></script>
+  <script src="pattern-engine.js?v=20261125-2" defer></script>
   <script src="tutorial.js?v=mutation-rate-20261119-1" defer></script>
   <script src="evolution-controls.js?v=ga-intro-20261124-1" defer></script>
 </head>
@@ -63,7 +63,7 @@
       <aside class="sidebar"><div class="experiment-stats"><div class="generation-badge"><span>현재 세대</span><strong id="generation">01</strong></div><div id="best-record" class="best-record"><span>현재 최고 점수</span><strong id="best-score">—</strong><small id="best-update" aria-live="polite">첫 세대 평가 전</small></div></div><div class="info-card"><p class="eyebrow">SELECTED MOTH</p><h2 id="moth-heading">나방을 선택하세요</h2><p id="moth-info">나방을 누르면 무늬를 만드는 숫자 유전자와 위장 점수를 볼 수 있습니다.</p><div id="genes" class="genes"></div></div><div class="info-card tip-card"><p class="eyebrow">생각해 보기</p><p id="tip">색과 무늬의 위치가 함께 위장 점수에 영향을 줍니다.</p></div></aside></div>
       <section class="info-card chart-card progress-card" aria-label="세대별 점수 변화"><div class="progress-card-head"><div><p class="eyebrow">FITNESS OVER TIME</p><h2>세대별 점수 변화</h2><p id="chart-summary">첫 세대를 평가하면 변화가 기록됩니다.</p></div><div class="legend"><span><i class="best-key"></i> 최고 점수</span><span><i class="avg-key"></i> 집단 평균</span></div></div><div class="chart-scroll"><canvas id="chart" width="1100" height="340" role="img" aria-label="첫 세대부터 현재 세대까지의 최고 점수와 집단 평균 그래프"></canvas></div><div class="progress-card-foot"><span id="chart-scale">점수 범위</span><span id="chart-exploration">다음 세대 변이 확률 2% · 선택값과 동일</span></div></section>
       <details class="guide-stagnation-details"><summary>최고 점수가 더 오르지 않는 이유</summary><div class="guide-stall-live"><strong id="ga-stall-count">0 / 40세대 정체</strong><span id="ga-stall-message">최고 점수의 갱신 여부를 관찰하세요.</span></div><p>마지막으로 갱신을 인정한 최고 점수보다 <strong>0.005%p를 초과해</strong> 높아지면 정체 횟수가 0이 됩니다. 그런 갱신이 없는 세대가 <strong>40번 연속</strong>되면 이번 실행을 마칩니다. 전체 실행 세대를 40으로 제한하는 규칙은 아닙니다.</p><ul><li>선택을 반복해 유전자가 비슷해지면 교차만으로 새로운 좋은 조합을 만들기 어려워질 수 있습니다.</li><li>돌연변이는 새로운 후보를 만들지만, 점수 개선을 보장하지 않습니다.</li><li>집단 평균이 오르더라도 최고 기록이 갱신되지 않으면 정체 횟수는 늘어납니다.</li></ul><p>40은 이 사이트에서 정한 정체 종료 기준입니다. 더 좋은 해가 남아 있을 수 있습니다. <a href="index.html#stagnation">점수 정체 설명 살펴보기</a></p></details>
-      <p class="footer-note">이 모형은 CamoEvo의 무늬 유전 개념을 단순화한 교육용 시뮬레이션입니다. 점수는 색 차이로 계산하며 실제 포식자의 판단을 재현하지 않습니다.</p>
+      <p class="footer-note">이 모형은 날개 무늬의 유전을 단순화한 교육용 시뮬레이션입니다. 점수는 색 차이로 계산하며 실제 포식자의 판단을 재현하지 않습니다.</p>
     </section>
     </div>
   </main>

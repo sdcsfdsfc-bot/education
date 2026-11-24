@@ -121,7 +121,7 @@
     }else if(kind==='analogy'){
       $('stagePill').textContent='02 · 담금질의 비유';$('coachTitle').textContent='이 과정이 담금질 알고리즘, SA입니다.';
       $('coachCopy').innerHTML='<p>금속을 가열하면 원자들이 활발하게 움직입니다. 천천히 냉각하면 더 안정적인 배열을 이루는 과정을 조합 최적화에 빗댄 것이 <strong>모의 담금질(Simulated Annealing)</strong>입니다.</p>';
-      $('extraContent').innerHTML='<div class="analogy-grid"><div><strong>금속에서</strong>원자의 배열<br>배열의 에너지<br>온도와 냉각</div><div><strong>경로 탐색에서</strong>식당의 방문 순서<br>전체 경로 길이<br>긴 후보의 채택 확률</div></div><p class="key-line">원자 그림은 원리 설명용입니다. 결정이 정돈되는 모습이 수학적인 최적해의 발견을 보장하지는 않습니다. T는 실제 섭씨 온도가 아닙니다.</p><p class="source-note">개념의 출처: <a href="https://doi.org/10.1126/science.220.4598.671" target="_blank" rel="noopener">Kirkpatrick 외, 1983 ↗</a></p>';
+      $('extraContent').innerHTML='<div class="analogy-grid"><div><strong>금속에서</strong>원자의 배열<br>배열의 에너지<br>온도와 냉각</div><div><strong>경로 탐색에서</strong>식당의 방문 순서<br>전체 경로 길이<br>긴 후보의 채택 확률</div></div><p class="key-line">원자 그림은 원리 설명용입니다. 결정이 정돈되는 모습이 수학적인 최적해의 발견을 보장하지는 않습니다. T는 실제 섭씨 온도가 아닙니다.</p>';
     }else{
       $('stagePill').textContent='02 · 이제 직접';$('coachTitle').textContent='다음은 여러분의 실험입니다.';
       $('coachCopy').innerHTML='<p><strong>짧은 후보 채택 → 긴 후보도 채택 → 새로운 배열에서 더 짧은 후보 채택 → 저온에서 긴 후보 기각</strong>의 네 장면을 확인했습니다.</p><p>고온에서 잠시 긴 경로를 받아들여 탐색 범위를 넓히고, 시간이 지나면 긴 경로를 채택할 가능성을 줄이는 것이 핵심입니다.</p><p>3부에서는 <strong>도시 수, 온도, 냉각률</strong>을 직접 바꿔 실험해 보세요.</p>';
