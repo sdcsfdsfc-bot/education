@@ -15,11 +15,11 @@
 .course-pso .algorithm-art{background:linear-gradient(180deg,#fff,#f3f6fb)}
 .course-pso .course-keywords li{color:#5b6c8b;border-color:#dfe5f0;background:#f6f8fc}
 .course-pso .course-open{color:#526c97}
-.course-insights{margin:0 0 20px;border-top:1px solid #e2e9dc;padding-top:18px;display:grid;gap:21px}
-.course-insights>div{display:grid;grid-template-columns:1fr;gap:5px}
-.course-insights dt{font-size:14px;line-height:1.9;font-weight:700;color:#4c6d3f}
+.course-insights{margin:0 0 20px;border-top:1px solid #e2e9dc;display:grid;gap:0}
+.course-insights>div{display:grid;grid-template-columns:94px minmax(0,1fr);gap:15px;padding:16px 0}.course-insights>div+div{border-top:1px solid #e8ede3}
+.course-insights dt{font-size:14px;line-height:1.9;font-weight:700;color:#4c6d3f;padding-top:1px}
 .course-insights dd{font-size:16px;line-height:1.85;color:#65735f;margin:0;word-break:keep-all;overflow-wrap:anywhere}
-.course-insights dd strong{display:block;font-size:17px;font-weight:700;color:#3f6137;line-height:1.65;margin-bottom:6px}
+.course-insights dd strong{display:block;font-size:17px;font-weight:700;color:#3f6137;line-height:1.65;margin-bottom:5px}
 .course-insights dd span{display:block}
 .course-insights .course-limitation dt,.course-insights .course-limitation dd strong{color:#805c32}
 .comparison-table{table-layout:fixed;min-width:850px}
@@ -27,4 +27,5 @@
 .comparison-table td:nth-child(2){white-space:normal}
 .comparison-table td{word-break:keep-all;overflow-wrap:anywhere}
 .comparison-note{margin:16px 0;color:#63745a;font-size:14px;line-height:1.9;word-break:keep-all}
-@media(max-width:620px){.course-insights{gap:19px}.comparison-note{font-size:14px}}
+@media(max-width:1050px){.course-insights>div{grid-template-columns:1fr;gap:5px}}
+@media(max-width:620px){.course-insights>div{padding:15px 0}.comparison-note{font-size:14px}}

@@ -3,80 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f4f6f1">
-  <meta name="description" content="식당 9곳의 경로로 후보 생성, 온도와 채택·기각 확률, 자유 실험까지 배우는 SA 알고리즘 튜토리얼">
-  <title>SA 알고리즘 · 단계별 튜토리얼</title>
-  <link rel="stylesheet" href="../../../assets/learning-guide.css?v=20261125-1">
-  <link rel="stylesheet" href="tutorial.css?v=20261125-1">
-  <link rel="stylesheet" href="introduction.css?v=20261125-1">
-  <script src="tutorial-model.js?v=20261103-3" defer></script>
-  <script src="tutorial.js?v=20261125-2" defer></script>
+  <meta name="theme-color" content="#194b3c">
+  <meta name="description" content="담금질 알고리즘의 배경과 후보 생성·확률적 채택·냉각 원리를 이해하고, 식당 방문 경로를 탐색합니다.">
+  <title>담금질 알고리즘 소개 · 천천히 식히며 찾는 탐색</title>
+  <link rel="stylesheet" href="../../../assets/learning-guide.css?v=sa-clean-20261125-1">
+  <link rel="stylesheet" href="../../../assets/problem-fit.css?v=20261125-1">
+  <link rel="stylesheet" href="introduction.css?v=sa-clean-20261125-1">
   <link rel="stylesheet" href="../../../assets/course-nav.css">
   <script src="../../../assets/algorithms.js" defer></script>
   <script src="../../../assets/course-nav.js" defer></script>
-  <script src="annealing.js?v=20261125-1" defer></script>
-  <script src="introduction.js?v=20261125-1" defer></script>
-  <link rel="stylesheet" href="../../../assets/problem-fit.css?v=20261125-1">
 </head>
-<body>
-  <div class="app-shell">
-    <header class="masthead"><a class="brand" href="./"><span class="brand-icon">↗</span>SA 알고리즘<span class="brand-tag">알고리즘 실험실</span></a><span class="edition">LEARN → EXPLORE</span></header>
-    <section class="page-heading"><div><p class="eyebrow">SIMULATED ANNEALING · INTERACTIVE TUTORIAL</p><h1>SA 알고리즘</h1><p class="lead">소개부터 직접 실험까지, 네 단계로 담금질 알고리즘을 배워 보세요.</p></div><span class="lesson-label" id="lessonLabel">PART 00 / 04</span></section>
-    <nav class="part-nav" aria-label="학습 파트"><button class="part-tab active" data-part="0" aria-current="step"><span>00</span><div>알고리즘 소개<small>원리와 문제 이해하기</small></div></button><button class="part-tab" data-part="1"><span>01</span><div>후보 경로 만들기<small>무작위 추출과 구간 뒤집기</small></div></button><button class="part-tab" data-part="2"><span>02</span><div>온도와 선택의 확률<small>긴 경로도 받아들이는 이유</small></div></button><button class="part-tab" data-part="3"><span>03</span><div>내가 직접 실험하기<small>조건을 바꾸며 자유롭게 탐색</small></div></button></nav>
-    <main>
-      <section id="introView" class="intro-view" aria-label="SA 알고리즘 소개">
-        <article class="panel intro-overview"><p class="eyebrow">BEFORE YOU START</p><h2>담금질 알고리즘, 한 개의 답을 천천히 다듬는 탐색</h2><div class="intro-copy"><p>담금질(Simulated Annealing, SA)은 금속을 가열한 뒤 천천히 식혀 안정된 구조를 얻는 과정에서 착안했습니다.</p><p>최적화 문제에서는 가능한 답 하나를 <strong>현재 해</strong>로 두고, 작은 변화를 준 <strong>후보 해</strong>를 만들어 비교합니다.</p><p>후보가 더 나아지면 바로 받아들입니다. 더 나빠졌더라도 탐색 초반에는 일정 확률로 수용해 다른 가능성을 살펴볼 수 있습니다.</p><p>온도가 내려갈수록 나쁜 후보를 받아들이는 확률도 낮아집니다. 넓게 탐색하는 일에서 좋은 해 주변을 다듬는 일로 서서히 무게가 옮겨갑니다.</p></div></article>
-        <div class="intro-columns">
-          <article class="panel intro-detail"><p class="eyebrow">ONE ITERATION AT A TIME</p><h2>탐색은 이렇게 진행됩니다</h2><ol class="intro-steps"><li><strong>현재 경로에서 출발</strong><span>식당 아홉 곳을 방문하고 출발점으로 돌아옵니다.</span></li><li><strong>이웃 경로 제안</strong><span>두 위치를 고르고 그 사이의 방문 순서를 뒤집습니다.</span></li><li><strong>비교하고 채택</strong><span>짧아지면 채택하고, 길어지면 확률에 따라 결정합니다.</span></li><li><strong>기록하고 냉각</strong><span>최선의 경로를 기록한 뒤 온도를 낮추고 반복합니다.</span></li></ol></article>
-          <article class="panel intro-detail"><p class="eyebrow">THE ROUTE PROBLEM</p><h2>식당 아홉 곳을 한 바퀴</h2><p>이 실습은 여러 장소를 한 번씩 방문하고 출발점으로 돌아오는 외판원 문제(TSP)를 다룹니다. 가능한 방문 순서는 장소 수가 늘수록 빠르게 많아집니다.</p><p>지도는 안내도의 상대 위치를 옮긴 도식입니다. 계산에 쓰는 값은 도식상의 직선거리이며 실제 보행거리나 미터 단위가 아닙니다.</p><button class="button primary intro-start" type="button" data-go-part="1">후보 경로 만들기 시작</button></article>
-        </div>
-        <div class="sa-intro-guide">
-          <section class="guide-section" aria-labelledby="sa-background-title">
-            <p class="guide-eyebrow">WHY ANNEALING?</p><h2 id="sa-background-title">금속의 열처리를, 답을 찾는 규칙으로</h2>
-            <div class="guide-two-columns"><p>SA는 고체를 충분히 가열한 뒤 서서히 식히는 <strong>어닐링(annealing)</strong>에서 착안했습니다. 통계물리의 계산 방법을 조합 최적화에 연결한 방법으로, 회로 배치와 외판원 문제 등에 응용됩니다.</p><p>한국어로 흔히 ‘담금질 알고리즘’이라 부르지만, 여기서 본뜨는 핵심은 <strong>서서히 식히는 과정</strong>입니다. 계산의 온도는 섭씨나 실제 금속의 온도가 아니라, 나쁜 후보를 받아들이는 정도를 조절하는 수치입니다.</p></div>
-            <div class="guide-table-scroll" role="region" aria-label="금속 냉각과 SA의 대응" tabindex="0"><table class="guide-mapping"><thead><tr><th scope="col">열처리에서 빌린 말</th><th scope="col">최적화에서의 의미</th><th scope="col">이 실험에서는</th></tr></thead><tbody><tr><th scope="row">원자 배열</th><td>답 후보의 구성</td><td>장소를 방문하는 순서</td></tr><tr><th scope="row">에너지</th><td>줄이고 싶은 비용</td><td>출발점으로 돌아오는 전체 경로 길이</td></tr><tr><th scope="row">온도 T</th><td>나쁜 후보를 받아들이는 정도</td><td>더 긴 경로를 채택할 확률 조절</td></tr><tr><th scope="row">냉각</th><td>탐색을 서서히 신중하게 바꾸기</td><td>매 후보 판정 후 T에 냉각률 곱하기</td></tr></tbody></table></div>
-          </section>
+<body class="guide-intro-page">
+  <main class="guide-overview sa-overview">
+    <nav class="guide-local-nav" aria-label="담금질 알고리즘 학습 화면"><a href="index.html" aria-current="page">배경과 원리</a><a href="learn.html">경로 탐색 체험</a></nav>
+    <header class="guide-overview-hero">
+      <div>
+        <p class="guide-eyebrow">SIMULATED ANNEALING · BEFORE THE LAB</p>
+        <h1>때로는 돌아가며,<br><em>더 짧은 길을 찾습니다.</em></h1>
+        <p class="guide-lead">현재 답을 조금 바꾸고, 더 나쁜 후보도 때로는 받아들입니다. 온도를 낮추며 탐색을 점차 신중하게 바꾸는 방법이 <strong>담금질 알고리즘(SA)</strong>입니다.</p>
+        <a class="guide-action" href="learn.html">경로 탐색 체험하기</a>
+      </div>
+      <aside class="guide-hero-note" aria-label="이 체험의 목표와 평가 기준">
+        <span class="guide-eyebrow">IN THIS LAB</span><h2>식당 9곳, 하나의 방문 순서</h2>
+        <svg viewBox="0 0 420 190" fill="none" aria-hidden="true"><path d="M45 78 326 42 121 154 210 22 377 104 110 28 312 151 70 123 212 168Z" stroke="#c8d7bf" stroke-width="2" stroke-dasharray="5 7"/><path d="M45 78 110 28 210 22 326 42 377 104 312 151 212 168 121 154 70 123Z" stroke="#4c7b54" stroke-width="3" stroke-linejoin="round"/><g fill="#f9fcf6" stroke="#4c7b54" stroke-width="3"><circle cx="110" cy="28" r="7"/><circle cx="210" cy="22" r="7"/><circle cx="326" cy="42" r="7"/><circle cx="377" cy="104" r="7"/><circle cx="312" cy="151" r="7"/><circle cx="212" cy="168" r="7"/><circle cx="121" cy="154" r="7"/><circle cx="70" cy="123" r="7"/></g><circle cx="45" cy="78" r="10" fill="#b17b3d" stroke="white" stroke-width="3"/></svg>
+        <dl><div><dt>바꾸는 것</dt><dd>식당을 방문하는 순서</dd></div><div><dt>비교하는 것</dt><dd>출발점으로 돌아오는 전체 경로 길이</dd></div></dl>
+      </aside>
+    </header>
 
-          <section class="guide-section" aria-labelledby="sa-acceptance-title">
-            <p class="guide-eyebrow">WHY ACCEPT A WORSE ROUTE?</p><h2 id="sa-acceptance-title">잠깐 길어지는 이동이, 다른 가능성으로 이어질 수 있어요.</h2>
-            <p class="guide-section-lead">지금보다 짧아지는 변화만 허용하면 주변의 더 좋은 후보를 찾기 어려운 곳에 머물 수 있습니다. SA는 더 긴 후보도 확률로 받아들여 다른 방문 순서를 살펴볼 기회를 줍니다. 그 이동이 나중에 더 좋은 해로 이어진다는 보장은 없습니다.</p>
-            <div class="guide-equation"><div class="guide-inline-formula">ΔL = 후보 길이 − 현재 길이</div><p><strong>ΔL ≤ 0:</strong> 항상 채택합니다. <strong>ΔL &gt; 0:</strong> p = exp(−ΔL / T)의 확률로 채택합니다.</p><p>균등한 무작위 수 u를 뽑아 u &lt; p이면 채택합니다. 길어지는 정도가 클수록, 온도가 낮을수록 확률이 작아집니다.</p></div>
-            <div class="guide-process-grid"><article><h3>현재 경로와 후보 경로</h3><p>현재의 방문 순서에서 두 위치 사이를 뒤집어 후보 하나를 만듭니다. 비교 기준은 지금까지의 최선이 아닌 <strong>현재 경로</strong>입니다.</p></article><article><h3>현재 기록과 최선 기록</h3><p>채택한 후보가 길어지면 현재 길이는 늘어날 수 있습니다. 별도로 저장한 최선 길이는 이전 기록보다 짧을 때만 갱신합니다.</p></article><article><h3>반복 횟수와 온도</h3><p>후보 하나를 만들고 판정할 때마다 한 번의 반복입니다. 기각하더라도 온도를 낮춥니다. 화면의 재생 속도는 초당 처리량을 바꿉니다.</p></article></div>
-            <p class="guide-quiet-note">단계별 수업은 식당 9곳과 골라 둔 고정 예시를 사용합니다. 자유 실험은 무작위로 배치한 지점을 사용하며, 반복마다 새 후보와 추첨값을 생성합니다.</p>
-          </section>
+    <section class="guide-section" aria-labelledby="sa-background-title">
+      <p class="guide-eyebrow">BACKGROUND</p><h2 id="sa-background-title">금속이 서서히 식는 과정에서</h2>
+      <p class="guide-section-lead">금속을 가열한 뒤 천천히 식혀 안정된 구조를 얻는 어닐링에서 착안했습니다. 최적화에서는 원자 배열을 ‘답’, 에너지를 ‘줄이고 싶은 비용’으로 바꿔 생각합니다. 온도는 실제 섭씨가 아니라 탐색의 성격을 조절하는 수치입니다.</p>
+      <div class="sa-temperature-pair"><article><h3>높은 온도 · 넓게 탐색</h3><p>더 긴 경로도 비교적 자주 받아들여, 다른 방문 순서를 살펴봅니다.</p></article><article><h3>낮은 온도 · 신중하게 선택</h3><p>더 긴 경로를 받아들일 확률이 줄어들고, 짧아지는 변화에 집중합니다.</p></article></div>
+    </section>
 
-          <section class="guide-section" id="sa-stagnation" aria-labelledby="sa-plateau-title">
-            <p class="guide-eyebrow">WHEN THE CURVE FLATTENS</p><h2 id="sa-plateau-title">최선 길이가 더 줄지 않는 이유</h2>
-            <div class="guide-reason-grid"><article><span>낮아진 온도</span><h3>긴 경로를 거쳐 가기 어려워져요.</h3><p>온도가 낮으면 더 긴 후보의 채택 확률이 작아집니다. 더 좋은 곳으로 가려면 일시적인 악화가 필요한 상황에서 현재 경로 주변에 머물 수 있습니다.</p></article><article><span>후보를 만드는 방법</span><h3>이번 뒤집기로는 개선되지 않을 수 있어요.</h3><p>현재 경로에서 고른 구간을 뒤집어도 짧아지지 않을 수 있습니다. 더 좋은 변경이 있어도 무작위로 그 구간을 아직 뽑지 않았을 수 있습니다.</p></article><article><span>누적 최선 그래프</span><h3>탐색이 계속돼도 선은 평평할 수 있어요.</h3><p>후보를 기각하거나 이전 최고 기록보다 긴 경로를 채택하면 최선 길이는 그대로입니다. 최선 그래프의 정체만으로 탐색 중단이나 전역 최적해 도달을 판단할 수는 없습니다.</p></article></div>
-            <aside class="guide-callout"><h3>천천히 식히는 것에도 계산 비용이 들어요.</h3><p>냉각이 빠르면 다른 가능성을 살필 기회를 일찍 잃을 수 있고, 느리면 같은 온도 수준에서 더 오래 탐색합니다. 초기 온도와 냉각률뿐 아니라 길이의 수치 규모와 이웃 생성 방식도 함께 살펴야 합니다.</p></aside>
-          </section>
+    <section class="guide-section" aria-labelledby="sa-process-title">
+      <p class="guide-eyebrow">HOW IT SEARCHES</p><h2 id="sa-process-title">후보를 만들고, 선택하고, 온도를 낮춥니다.</h2>
+      <div class="guide-process-grid sa-guide-process"><article><h3>현재 경로</h3><p>식당을 한 번씩 방문하고 출발점으로 돌아오는 순서 하나에서 시작합니다.</p></article><article><h3>후보 만들기</h3><p>두 위치 사이의 방문 순서를 뒤집어, 비교할 경로 하나를 만듭니다.</p></article><article><h3>채택 또는 유지</h3><p>짧아지면 채택합니다. 길어져도 온도에 따른 확률로 채택하고, 기각하면 현재 경로를 유지합니다.</p></article><article><h3>기록하고 냉각</h3><p>지금까지의 최선 경로를 따로 저장합니다. 후보 판정 후 온도를 낮추고 같은 과정을 반복합니다.</p></article></div>
+      <details class="guide-more"><summary>채택 확률을 식으로 살펴보기</summary><div class="guide-equation"><div class="guide-inline-formula">ΔL = 후보 길이 − 현재 길이</div><p>ΔL ≤ 0이면 항상 채택하고, ΔL &gt; 0이면 p = exp(−ΔL / T)의 확률로 채택합니다. 길어지는 정도가 클수록, 온도 T가 낮을수록 채택 확률이 작아집니다.</p></div></details>
+      <p class="guide-quiet-note">체험 지도는 상대 위치를 옮긴 도식입니다. 경로 길이는 도식상의 직선거리로 계산하며 실제 보행거리나 미터 단위가 아닙니다.</p>
+    </section>
 
-          <section class="guide-section" id="sa-stop" aria-labelledby="sa-stop-title">
-            <p class="guide-eyebrow">HOW THIS EXPERIMENT STOPS</p><h2 id="sa-stop-title">자유 실험은 언제 끝나나요?</h2>
-            <p class="guide-section-lead">매 반복 뒤 T에 냉각률을 곱하고, <strong>온도가 0.015 미만</strong>이 되거나 <strong>2,400회</strong>를 실행하면 종료합니다. 최선 길이가 몇 회 동안 그대로였는지는 종료 판단에 사용하지 않습니다. 아래 계산은 자유 실험과 같은 종료 상수를 사용합니다.</p>
-            <div class="guide-stop-demo"><h3>냉각 조건과 실행 한도 살펴보기</h3><div class="guide-control-grid"><label class="guide-slider" for="sa-guide-temperature">초기 온도 T₀ <output id="sa-guide-temperature-output">100</output><input id="sa-guide-temperature" type="range" min="10" max="300" value="100"></label><label class="guide-slider" for="sa-guide-cooling">매 반복에 곱하는 냉각률 <output id="sa-guide-cooling-output">0.995</output><input id="sa-guide-cooling" type="range" min="980" max="999" value="995"></label></div><div class="guide-rule-stats"><span>종료 반복 <strong id="sa-guide-budget">1,757회</strong></span><span>100회 후 온도 <strong id="sa-guide-after100">60.58</strong></span><span>그때 ΔL=40 채택 확률 <strong id="sa-guide-probability">51.669%</strong></span></div><p class="guide-demo-copy" id="sa-guide-budget-copy" aria-live="polite"></p><p class="guide-quiet-note">Tₙ = T₀ × 냉각률ⁿ · 실행 도중 설정을 바꾸지 않을 때의 종료 계산입니다. ΔL=40은 수업에서 쓰는 예시 길이 차이이며, 최적해를 찾을 확률은 아닙니다. 이 조절기는 아래 자유 실험의 설정을 바꾸지 않습니다.</p></div>
-            <details class="guide-more"><summary>0.995와 0.999 중 어느 쪽이 더 천천히 식나요?</summary><p>1에 가까운 0.999가 더 천천히 식습니다. 같은 반복 횟수 뒤에 더 높은 온도를 유지해 긴 후보도 상대적으로 자주 받아들이지만, 더 좋은 최종 결과를 보장하지는 않습니다. 이 실험에서는 천천히 식혀도 2,400회 한도에 먼저 도달할 수 있습니다.</p><p>단계별 2부는 T(t)=160×0.65ᵗ인 고정 수업 장면을 사용합니다. 자유 실험의 냉각률과 종료 한도는 별도의 실행 설정입니다. 결과를 비교할 때 같은 지점 배치와 초기 경로인지도 확인하세요.</p></details>
-          </section>
+    <section class="guide-section" id="sa-stagnation" aria-labelledby="sa-plateau-title">
+      <p class="guide-eyebrow">WHEN PROGRESS SLOWS</p><h2 id="sa-plateau-title">최선 길이가 그대로인 이유</h2>
+      <div class="guide-two-columns"><p>다른 후보를 살펴도 이전 최고 기록보다 짧지 않으면 <strong>최선 길이 그래프는 평평</strong>합니다. 현재 경로는 변해도 최선 기록은 그대로일 수 있습니다.</p><p>온도가 낮아지면 긴 후보를 거쳐 다른 영역으로 이동하기 어려워집니다. 그래프의 정체만으로 가장 짧은 경로를 찾았다고 판단할 수는 없습니다.</p></div>
+      <details class="guide-more" id="sa-stop"><summary>자유 실험의 종료 조건</summary><p>냉각 후 온도가 0.015 미만이 되거나 2,400회 반복하면 실행을 마칩니다. 정체 횟수로 멈추는 규칙은 아니며, 종료가 최적해 도달을 뜻하지는 않습니다. 냉각률은 매번 온도에 곱하는 값으로, 1에 가까울수록 천천히 식습니다.</p></details>
+    </section>
 
-          <section class="guide-section problem-fit" aria-labelledby="sa-use-title"><h2 id="sa-use-title">잘 맞는 문제와 잘 맞지 않는 문제</h2><div class="problem-fit-grid"><article><span class="problem-fit-label">잘 맞는 문제</span><h3>회로 부품 배치·공장 설비 배치</h3><p>부품이나 설비의 위치를 바꿔 배선 길이·이동 비용을 줄이는 문제에 활용할 수 있어요. 잠깐 비용이 늘어나는 재배치를 거쳐 더 좋은 배치로 갈 여지가 있을 때 후보가 됩니다.</p></article><article class="problem-fit-poor"><span class="problem-fit-label">잘 맞지 않는 문제</span><h3>여러 수업을 동시에 옮겨야 하는 빡빡한 시간표</h3><p>한두 수업만 옮기면 교사·교실이 겹치는 시간표에서는, 단순 교환만 허용할 경우 새로운 유효한 답으로 이동하기 어려워요. 여러 수업을 함께 옮기는 변경 규칙이 필요합니다.</p></article></div></section>
-
-          <section class="guide-section guide-final-section"><p class="guide-eyebrow">LEARN, THEN EXPLORE</p><h2>후보를 만들고, 확률을 이해하고, 직접 비교하세요.</h2><p>1부에서 구간 뒤집기를, 2부에서 온도와 채택 확률을 살펴본 뒤 3부에서 설정을 바꾸며 실험할 수 있습니다.</p><button class="guide-action" type="button" data-go-part="1">후보 경로 만들기 시작</button></section>
-        </div>
-      </section>
-      <section id="tutorialView" aria-label="단계별 튜토리얼" hidden>
-        <div class="lesson-progress"><span id="progressText">장면 1</span><div class="progress-track"><i id="progressFill"></i></div><button class="text-button" id="restartPart">이 파트 처음부터 ↺</button></div>
-        <div class="learning-layout">
-          <div class="scene-column">
-            <section class="panel map-panel"><div class="panel-heading"><div><p class="eyebrow">CAMPUS FOOD TOUR</p><h2>식당 9곳, 하나의 방문 순서</h2></div><span class="scene-state" id="sceneState">장소 살펴보기</span></div><div class="map-stage"><svg id="campusMap" viewBox="0 0 740 620" role="img" aria-label="첨부 안내도의 상대 위치로 배치한 식당 9곳과 방문 순서"></svg><div class="map-orientation">↑<span>안내도 위쪽</span></div></div><div class="map-legend" id="mapLegend"></div><p class="numbering-note" id="visitOrderNote">점 안의 숫자는 방문 순서입니다.</p><p class="map-note">첨부 안내도의 상대 배치를 같은 비율로 옮긴 도식입니다. 길이는 도식상의 직선거리이며, 실제 보행거리나 미터 단위가 아닙니다.</p></section>
-            <section class="panel order-panel"><div class="panel-heading"><h2>점의 위치는 그대로, 방문 순서만 바꿉니다</h2></div><div id="routeOrder"></div></section>
-            <div id="heatVisuals" class="heat-visuals" hidden><section class="panel temperature-panel"><div class="panel-heading"><h2>시간에 따라 내려가는 온도</h2><span id="temperatureValue" class="temperature-value">T = 160</span></div><div class="formula">T(t) = 160 × 0.65<sup>t</sup></div><svg id="temperatureChart" viewBox="0 0 400 150" role="img" aria-label="시간 t가 증가할수록 온도가 감소하는 그래프"></svg><div id="coolingProbabilityHistory" class="cooling-probability-history"></div><p class="tiny">t는 냉각이 진행된 시간입니다. 네 장면은 t=0, 1, 2, 7의 상황을 보여줍니다.</p></section><section class="panel metal-panel"><div class="panel-heading"><h2>금속의 냉각에 빗대어 보면</h2><span id="metalPhase" class="metal-phase">활발한 운동</span></div><canvas id="metalCanvas" height="145" aria-label="온도가 내려가며 원자들이 규칙적인 배열을 이루는 개념 애니메이션"></canvas><p class="tiny">원자 배열 ↔ 방문 순서 · 에너지 ↔ 경로 길이<br>금속 원자의 냉각을 설명하는 개념 애니메이션입니다.</p></section></div>
-          </div>
-          <aside class="panel coach-panel"><div class="coach-top"><span class="stage-pill" id="stagePill">들어가기</span><span id="roundCount" class="round-count"></span></div><div class="coach-body" id="coachBody" aria-live="polite" aria-atomic="true"><h2 id="coachTitle"></h2><div id="coachCopy" class="coach-copy"></div><div id="selectionNotice" class="selection-notice" hidden></div><div id="distanceMetrics" class="distance-metrics" hidden></div><div id="probabilityVisual" class="probability-visual" hidden></div><div id="extraContent"></div></div><div id="roundNav" class="round-nav" aria-label="학습 예시 바로 가기"></div><div class="coach-actions"><button id="previousStep" class="button secondary">← 이전</button><button id="nextStep" class="button primary">다음 →</button></div><p class="tutorial-note">학습용 고정 예시 · 무작위 실행에서 판정이 잘 드러나는 예시를 골랐습니다. 3부에서는 매번 새롭게 무작위 추출합니다.</p></aside>
-        </div>
-      </section>
-      <section id="labView" hidden aria-label="자유 실험"><div class="panel lab-intro"><div><p class="eyebrow">PART 03 · YOUR TURN</p><h2>이제 SA 알고리즘을 직접 실험해 보세요.</h2><p>도시 수·초기 온도·냉각률을 바꿔 탐색하세요. 전체 프레임과 대표 프레임 탭에서 후보의 채택 과정을 다시 볼 수 있습니다.</p></div><a class="button secondary" href="lab.html?v=20261125-1" target="_blank" rel="noopener">실험 화면만 크게 열기 ↗</a></div><iframe id="labFrame" title="기존 외판원 문제 자유 실험실" loading="lazy"></iframe></section>
-    </main>
-    <footer class="page-footer"><span>후보 하나를 만들고 → 비교하고 → 받아들이거나 유지하고 → 온도를 낮춥니다.</span></footer>
-  </div>
+    <section class="guide-section problem-fit" aria-labelledby="sa-use-title"><h2 id="sa-use-title">잘 맞는 문제와 어려운 문제</h2><div class="problem-fit-grid"><article><span class="problem-fit-label">잘 맞는 문제</span><h3>회로 부품·공장 설비 배치</h3><p>위치를 바꾸며 배선 길이와 이동 비용을 줄이는 문제에 활용합니다.</p></article><article class="problem-fit-poor"><span class="problem-fit-label">어려운 문제</span><h3>여러 수업을 한꺼번에 옮겨야 하는 시간표</h3><p>단순 교환으로는 제약을 지키기 어려워, 변경 규칙을 따로 설계해야 합니다.</p></article></div></section>
+    <div class="sa-guide-footer"><p>후보 생성부터 확률 판정, 자유 실험까지 이어서 살펴보세요.</p><a class="guide-action" href="learn.html">경로 탐색 체험 시작</a></div>
+  </main>
 </body>
 </html>
